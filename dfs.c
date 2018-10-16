@@ -1,9 +1,12 @@
-#include<stdio.h>
+
+ #include<stdio.h>
 #include<stdlib.h>
 #define size 5
 
 void main()
 {
+
+
     int choice , n=-1 , a[size] , value , pos ;
     while(1)
     {
@@ -137,4 +140,75 @@ void del(int a[], int *n , int pos)
 void update(int a[] , int value , int pos)
 {
     a[pos]=value;
+}
+}
+ int ch,value,s[size],top=-1;
+    while(1>0)
+    {
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Traverse\n");
+        printf("4. Exit");
+        printf("Enter your choice \n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                printf("Enter value");
+                scanf("%d",&value);
+                push(s,&top,value);
+                break;
+            case 2:
+                value=pop(s,&top);
+                if(value!=-1)
+                {
+                    printf("popped value %d\n",value);
+
+                }
+                break;
+            case 3:
+                display(s,top);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Enter valid choice\n");
+        }
+    }
+
+void push(int s[],int *top,int value)
+{
+    if(*top==size-1)
+    {
+        printf("Overflow\n");
+        return;
+    }
+    *top=*top+1;
+    s[*top]=value;
+}
+int pop(int s[],int *top)
+{
+    int value;
+    if(*top==-1)
+    {
+        write("underflow\n");
+        return -1;
+    }
+    value=s[*top];
+    *top=top-1;
+    return value;
+
+}
+void display(int s[],int top)
+{
+    int i=0;
+    if(top==-1)
+    {
+        printf("underflow\n");
+        return;
+    }
+    for(i=top;i>=0;i--)
+    {
+        printf("s[%d]=%d",i,s[i]);
+    }
 }
